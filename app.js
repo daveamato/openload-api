@@ -63,7 +63,7 @@ app.get('/play/*', (req, res) => {
     if (err) {
       res.send({ status: false, error: err })
     }
-    logger.info('resolved', { url: info.url })
+    logger.info('resolved', { 'url': info.url })
     res.redirect(info.url)
     
     //res.setHeader('Content-Type', 'application/x-mpegURL');
