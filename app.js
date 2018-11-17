@@ -27,7 +27,7 @@ const requestCache = (duration) => {
 /** ROUTES **/
 /* home */
 app.get('/', (req, res) => {
-  const text = '<h1>YouTube-DL API project</h1><p>This is just a demonstration, <p>Full original source code available on Github: <a href="https://www.github.com/milankragujevic/openload-api/" target="_blank">openload-api.git</a>. </p><hr><p>Copyright &copy; 2018 David Amato. Some rights reserved. By using this API you may be committing copyright infringement. I am not responsible for the contents or original creation of the API. </p>'
+  const text = '<h1>YouTube-DL API</h1><p>This is just a demonstration, not for public use.</p><p>Full original source code available on Github: <a href="https://www.github.com/daveamato/openload-api/" target="_blank">openload-api</a>. </p><hr><p>Copyright &copy; 2018 David Amato. Some rights reserved. By using this API you may be committing copyright infringement. I am not responsible for the contents or original creation of the API.</p>'
   res.send(text)
 })
 
