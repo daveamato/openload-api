@@ -52,9 +52,10 @@ app.get('/:dlUrl', requestCache(60 * 60 * 12), (req, res) => {
   })
 })
 
-app.get('/play/:getUrl', function(req, res) {
+app.get('/play/:getUrl', requestCache(60 * 60 * 12), (req, res) => {
+  if (req.params.getUrl === '' || req.originalUrl === '/favicon.ico') { return }
   
-  let path = '${req.originalUrl}'.replace(/\/play\//g, '');
+  let path = req.originalUrl.replace(/\/play\//g, '')
   
   youtubedl.getInfo(path, (err, info) => {
     if (err) {
