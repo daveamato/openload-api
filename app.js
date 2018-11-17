@@ -53,9 +53,9 @@ app.get('/:dlUrl', requestCache(60 * 60 * 12), (req, res) => {
   })
 })
 
-app.get('/play/:getUrl', (req, res) => {
+app.get('/play/*', (req, res) => {
 
-  let path = decodeURIComponent(req.originalUrl).replace('/play/', '')
+  let path = req.params[0]
   logger.info('getting', { url: path })
   
   youtubedl.getInfo(path, (err, info) => {
