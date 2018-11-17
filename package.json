@@ -15,17 +15,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/milankragujevic/openload-api.git"
+    "url": "git+https://github.com/daveamato/openload-api.git"
   },
   "keywords": [
     "openload"
   ],
-  "author": "Milan Kragujević",
+  "author": "Dave Amato",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/milankragujevic/openload-api/issues"
+    "url": "https://github.com/daveamato/openload-api/issues"
   },
-  "homepage": "https://github.com/milankragujevic/openload-api#readme",
+  "homepage": "https://github.com/daveamato/openload-api#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
