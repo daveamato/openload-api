@@ -135,7 +135,7 @@ app.get('/ol/:videoId', requestCache(60 * 60 * 12), (req, res) => {
 })
 
 /** LISTEN **/
-app.listen(port, function () {
+app.listen(port, '0.0.0.0', function () {
      console.log("Running API on port " + port);
      logger.info('started', { success: true })
 });
