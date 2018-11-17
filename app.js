@@ -59,9 +59,9 @@ app.get('/play/*', (req, res) => {
   let path = req.params[0]
   logger.info('getting', { url: path })
   
-  youtubedl.getInfo(path, ['--source-address', req.ip], (err, info) => {
+  youtubedl.getInfo(path, ['--source-address='+req.ip, '--format=best'], (err, info) => {
     if (err) {
-      res.send({ status: false, error: 'Unknown error occurred!' })
+      res.send({ status: false, error: err })
     }
     logger.info('resolved', { url: info.url })
     res.redirect(info.url)
