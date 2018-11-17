@@ -53,9 +53,9 @@ app.get('/:dlUrl', requestCache(60 * 60 * 12), (req, res) => {
 })
 
 app.get('/play/:getUrl', function(req, res) {
-  console.log(JSON.stringify(req))
-  let path = req.originalUrl.replace('/play/', '')
-  let obJ = {}
+  
+  const path = req.originalUrl.replace('/play/', '')
+  console.log('getting path: ' + JSON.stringify(req));
   youtubedl.getInfo(path, (err, info) => {
     if (err) {
       res.send({ status: false, error: 'Unknown error occurred!' })
