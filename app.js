@@ -2,8 +2,9 @@ import express from 'express'
 import youtubedl from 'youtube-dl'
 import mcache from 'memory-cache'
 import logger from 'heroku-logger'
-import http from 'http'
+import https from 'https'
 
+//const https = require('https')
 const app = express()
 
 /** CONFIG **/
@@ -54,20 +55,22 @@ app.get('/:dlUrl', requestCache(60 * 60 * 12), (req, res) => {
   })
 })
 
-app.get('/play/*', (req, res) => {
+app.get('/play/*', requestCache(60 * 60 * 12), (req, res) => {
 
   let path = req.params[0]
   logger.info('getting', { url: path })
   
   
   
-  youtubedl.getInfo(path, (err, info) => {
+  youtubedl.getInfo(path, ['-f', 'best'], (err, info) => {
     if (err) {
       res.send({ status: false, error: 'Unknown error occurred!' })
     }
     logger.info('resolved', { url: info.url })
+    res.setHeader('Content-Type', 'application/x-mpegURL');
     //res.redirect(info.url)
-    http.get(path).pipe(res);
+    res.attachment(info._filename);
+    https.get(path).pipe(res);
     
     /*
     let stat = fs.statSync(info.url)
