@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/:dlUrl', requestCache(60 * 60 * 12), (req, res) => {
-  if (req.params.videoId === '' || req.params.videoId === 'favicon.ico') { return }
+  if (req.params.dlUrl === '' || req.params.dlUrl === 'favicon.ico') { return }
 
   let url = `${req.params.dlUrl}`
   youtubedl.getInfo(url, (err, info) => {
@@ -54,7 +54,7 @@ app.get('/:dlUrl', requestCache(60 * 60 * 12), (req, res) => {
 
 app.get('/play/:getUrl', function(req, res) {
   
-  let path = '${req.originalUrl}'.replace('/play/', '')
+  let path = '${req.originalUrl}'.replace(/\/play\//g, '');
   
   youtubedl.getInfo(path, (err, info) => {
     if (err) {
