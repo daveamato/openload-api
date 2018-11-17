@@ -2,6 +2,7 @@ import express from 'express'
 import youtubedl from 'youtube-dl'
 import mcache from 'memory-cache'
 import logger from 'heroku-logger'
+import fs from 'fs'
 
 const app = express()
 
