@@ -1,6 +1,7 @@
 import express from 'express'
 import youtubedl from 'youtube-dl'
 import mcache from 'memory-cache'
+import logger from 'heroku-logger'
 
 const app = express()
 
@@ -53,10 +54,9 @@ app.get('/:dlUrl', requestCache(60 * 60 * 12), (req, res) => {
 })
 
 app.get('/play/:getUrl', (req, res) => {
-  if (req.params.getUrl === '' || req.originalUrl === '/favicon.ico') { return }
-  
-  let path = '${req.path}'.replace('/play/', '')
-  console.log("getting url: " + path);
+
+  let path = req.originalUrl.replace('/play/', '')
+  logger.info('getting', { url: path })
   
   youtubedl.getInfo(path, (err, info) => {
     if (err) {
