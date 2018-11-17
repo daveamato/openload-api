@@ -33,10 +33,11 @@ app.get('/', (req, res) => {
   res.send(text)
 })
 
-app.get('/:dlUrl', requestCache(60 * 60 * 12), (req, res) => {
+app.get('/get/*', requestCache(60 * 60 * 12), (req, res) => {
   if (req.params.dlUrl === '' || req.params.dlUrl === 'favicon.ico') { return }
 
-  let url = `${req.params.dlUrl}`
+  //let url = `${req.params.dlUrl}`
+  let url = req.params[0]
   youtubedl.getInfo(url, (err, info) => {
     if (err) {
       res.send({ status: false, error: 'Unknown error occurred!' })
@@ -61,7 +62,7 @@ app.get('/play/*', (req, res) => {
   
   const ytopts = ['--source-address', req.ip];
   
-  youtubedl.getInfo(path, (err, info) => {
+  youtubedl.getInfo(path, ['-g'], (err, info) => {
     if (err) {
       res.send({ status: false, error: err })
     }
