@@ -55,13 +55,14 @@ app.get('/:dlUrl', requestCache(60 * 60 * 12), (req, res) => {
 
 app.get('/play/:getUrl', (req, res) => {
 
-  let path = req.originalUrl.replace('/play/', '')
+  let path = decodeURIComponent(req.originalUrl).replace('/play/', '')
   logger.info('getting', { url: path })
   
   youtubedl.getInfo(path, (err, info) => {
     if (err) {
       res.send({ status: false, error: 'Unknown error occurred!' })
     }
+    logger.info('resolved', { url: info.url })
     res.redirect(info.url)
     /*
     let stat = fs.statSync(info.url)
