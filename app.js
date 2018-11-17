@@ -54,7 +54,7 @@ app.get('/:dlUrl', requestCache(60 * 60 * 12), (req, res) => {
 
 app.get('/play/:getUrl', function(req, res) {
   console.log(JSON.stringify(req))
-  let path = req.path.replace('/play/', '')
+  let path = req.originalUrl.replace('/play/', '')
   let obJ = {}
   youtubedl.getInfo(path, (err, info) => {
     if (err) {
