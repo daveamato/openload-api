@@ -59,7 +59,9 @@ app.get('/play/*', (req, res) => {
   let path = req.params[0]
   logger.info('getting', { url: path })
   
-  youtubedl.getInfo(path, ['--source-address', '"'+req.ip+'"'], (err, info) => {
+  const ytopts = ['--source-address', req.ip];
+  
+  youtubedl.getInfo(path, (err, info) => {
     if (err) {
       res.send({ status: false, error: err })
     }
