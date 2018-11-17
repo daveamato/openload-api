@@ -46,10 +46,10 @@ app.get('/get/*', requestCache(60 * 60 * 12), (req, res) => {
     res.send({
       success: true,
       data: {
-        id: info.id||'None',
-        title: info.title||'None',
-        stream: info.url||'None',
-        thumbnail: info.thumbnail||'None'
+        id: info.id ? info.id : 'None',
+        title: info.title ? info.title : 'None',
+        stream: info.url ? info.url : 'None',
+        thumbnail: info.thumbnail ? info.thumbnail : 'None'
       }
     })
   })
@@ -128,17 +128,17 @@ app.get('/ol/:videoId', requestCache(60 * 60 * 12), (req, res) => {
     res.send({
       success: true,
       data: {
-        id: info.id,
-        title: info.title,
-        stream: info.url,
-        thumbnail: info.thumbnail
+        id: info.id ? info.id : 'None',
+        title: info.title ? info.title : 'None',
+        stream: info.url ? info.url : 'None',
+        thumbnail: info.thumbnail ? info.thumbnail : 'None'
       }
     })
   })
 })
 
 /** LISTEN **/
-app.listen(port, '0.0.0.0', function () {
+app.listen(port, function () {
      console.log("Running API on port " + port);
      logger.info('started', { success: true })
 });
