@@ -2,9 +2,8 @@ import express from 'express'
 import youtubedl from 'youtube-dl'
 import mcache from 'memory-cache'
 import logger from 'heroku-logger'
-import https from 'https'
+//import https from 'https'
 
-//const https = require('https')
 const app = express()
 
 /** CONFIG **/
