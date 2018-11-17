@@ -63,8 +63,8 @@ app.get('/play/*', (req, res) => {
       res.send({ status: false, error: 'Unknown error occurred!' })
     }
     logger.info('resolved', { url: info.url })
-    res.redirect(info.url)
-    /*
+    //res.redirect(info.url)
+    
     let stat = fs.statSync(info.url)
     let fileSize = stat.size
     let range = req.headers.range
@@ -92,7 +92,7 @@ app.get('/play/*', (req, res) => {
       res.writeHead(200, head)
       fs.createReadStream(path).pipe(res)
     }
-    */
+    
     /*
     obJ = {
       success: true,
