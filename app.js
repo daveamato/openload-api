@@ -59,7 +59,8 @@ app.get('/play/:getUrl', function(req, res) {
     if (err) {
       res.send({ status: false, error: 'Unknown error occurred!' })
     }
-    
+    res.redirect(info.url)
+    /*
     let stat = fs.statSync(info.url)
     let fileSize = stat.size
     let range = req.headers.range
@@ -87,6 +88,7 @@ app.get('/play/:getUrl', function(req, res) {
       res.writeHead(200, head)
       fs.createReadStream(path).pipe(res)
     }
+    */
     /*
     obJ = {
       success: true,
