@@ -55,22 +55,21 @@ app.get('/:dlUrl', requestCache(60 * 60 * 12), (req, res) => {
   })
 })
 
-app.get('/play/*', requestCache(60 * 60 * 12), (req, res) => {
+app.get('/play/*', (req, res) => {
 
   let path = req.params[0]
   logger.info('getting', { url: path })
   
-  
-  
-  youtubedl.getInfo(path, ['-f', 'best'], (err, info) => {
+  youtubedl.getInfo(path, ['--source-address', req.ip], (err, info) => {
     if (err) {
       res.send({ status: false, error: 'Unknown error occurred!' })
     }
     logger.info('resolved', { url: info.url })
-    res.setHeader('Content-Type', 'application/x-mpegURL');
-    //res.redirect(info.url)
-    res.attachment(info._filename);
-    https.get(path).pipe(res);
+    res.redirect(info.url)
+    
+    //res.setHeader('Content-Type', 'application/x-mpegURL');
+    //res.attachment(info._filename);
+    //https.get(path).pipe(res);
     
     /*
     let stat = fs.statSync(info.url)
