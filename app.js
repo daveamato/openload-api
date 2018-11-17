@@ -2,7 +2,7 @@ import express from 'express'
 import youtubedl from 'youtube-dl'
 import mcache from 'memory-cache'
 import logger from 'heroku-logger'
-import fs from 'fs'
+import http from 'http'
 
 const app = express()
 
@@ -59,13 +59,17 @@ app.get('/play/*', (req, res) => {
   let path = req.params[0]
   logger.info('getting', { url: path })
   
+  
+  
   youtubedl.getInfo(path, (err, info) => {
     if (err) {
       res.send({ status: false, error: 'Unknown error occurred!' })
     }
     logger.info('resolved', { url: info.url })
     //res.redirect(info.url)
+    http.get(path).pipe(res);
     
+    /*
     let stat = fs.statSync(info.url)
     let fileSize = stat.size
     let range = req.headers.range
@@ -93,7 +97,7 @@ app.get('/play/*', (req, res) => {
       res.writeHead(200, head)
       fs.createReadStream(path).pipe(res)
     }
-    
+    */
     /*
     obJ = {
       success: true,
