@@ -42,13 +42,16 @@ app.get('/get/*', requestCache(60 * 60 * 12), (req, res) => {
     if (err) {
       res.send({ status: false, error: 'Unknown error occurred!' })
     }
-
+    
+    res.send(info.url)
+/*
     res.send({
         id: info.id ? info.id : 'None',
         title: info.title ? info.title : 'None',
         stream: info.url ? info.url : 'None',
         thumbnail: info.thumbnail ? info.thumbnail : 'None'
       })
+*/
   })
 })
 
