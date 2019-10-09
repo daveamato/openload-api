@@ -9,10 +9,10 @@
     "start": "node dist/app.js"
   },
   "dependencies": {
-    "express": "^4.14.0",
+    "express": "^4.16.4",
+    "heroku-logger": "^0.3.3",
     "memory-cache": "^0.2.0",
-    "youtube-dl": "^1.12.2",
-    "heroku-logger": "^0.3.3"
+    "youtube-dl": "^1.12.2"
   },
   "repository": {
     "type": "git",
