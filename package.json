@@ -26,5 +26,8 @@
   },
   "homepage": "https://github.com/daveamato/openload-api#readme",
   "devDependencies": {
+  },
+  "engines":{
+    "node": ">= 12"
   }
 }
