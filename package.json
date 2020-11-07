@@ -8,9 +8,14 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.17.1",
     "heroku-logger": "^0.3.3",
-    "memory-cache": "^0.2.0"
+    "memory-cache": "^0.2.0",
+    "streamify": "^1.0.0",
+    "universalify": "^2.0.0",
+    "request": "^2.88.2",
+    "hh-mm-ss": "^1.2.0",
+    "execa": "^4.0.3"
   },
   "repository": {
     "type": "git",
