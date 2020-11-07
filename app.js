@@ -1,5 +1,5 @@
 const express = require('express')
-const youtubedl = require('youtube-dl')
+const youtubedl = require('youtube-dl/lib/youtube-dl')
 const mcache = require('memory-cache')
 const logger = require('heroku-logger')
 //import https from 'https'
